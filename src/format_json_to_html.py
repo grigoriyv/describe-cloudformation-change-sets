@@ -18,11 +18,11 @@ class ChangeSet:
         action = self.changes['ResourceChange']['Action']
         color = ""
         if self.changes['ResourceChange']['Action'] == "Modify":
-            color = "&#9888;" # Warning symbol
+            color = "&#127490;" # Warning symbol
         elif self.changes['ResourceChange']['Action'] == "Add":
-            color = "&#128994;" # Green circle
+            color = "&#127535;" # Green circle
         elif self.changes['ResourceChange']['Action'] == "Remove":
-            color = "&#128997;" # Red square
+            color = "&#127540;" # Red square
         return f"{color} {action}"
 
     def logical_resource_id(self):
