@@ -10,6 +10,10 @@ aws cloudformation create-change-set \
     --template-body file://$INPUT_TEMPLATE_FILE \
     $INPUT_OPTIONS
 
+aws cloudformation wait change-set-create-complete \
+    --stack-name "$INPUT_STACK_NAME" \
+    --change-set-name change-set 
+
 change_set_name=$(aws cloudformation list-change-sets --stack-name "$INPUT_STACK_NAME" | jq .Summaries[0].ChangeSetName | tr -d '"')
 # If change_set_name is not null, describe and put output to a json file. Delete the change set and process the json
 # to make the html report.
